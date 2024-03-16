@@ -17,6 +17,7 @@ import datasets.sun397
 import datasets.caltech101
 import datasets.ucf101
 import datasets.imagenet
+import datasets.mvtec_ad
 
 import datasets.imagenet_sketch
 import datasets.imagenetv2
@@ -145,7 +146,6 @@ def main(args):
         trainer.load_model(args.model_dir, epoch=args.load_epoch)
         trainer.test()
         return
-
     if not args.no_train:
         trainer.train()
 

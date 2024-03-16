@@ -221,7 +221,8 @@ class CoOp(TrainerX):
 
     def build_model(self):
         cfg = self.cfg
-        classnames = self.dm.dataset.classnames
+        # classnames = self.dm.dataset.classnames
+        classnames = ['good product', 'anomaly product']
 
         print(f"Loading CLIP (backbone: {cfg.MODEL.BACKBONE.NAME})")
         clip_model = load_clip_to_cpu(cfg)
@@ -258,7 +259,6 @@ class CoOp(TrainerX):
 
     def forward_backward(self, batch):
         image, label = self.parse_batch_train(batch)
-        
         prec = self.cfg.TRAINER.COOP.PREC
         if prec == "amp":
             with autocast():
